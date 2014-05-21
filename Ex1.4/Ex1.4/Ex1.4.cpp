@@ -19,7 +19,7 @@ int main()
 	celsius = lower;
 	while (celsius <= upper) {
 		fahr = 9/5 * celsius + 32;  // T = 9/5C+32
-		printf("%d\t%d\n", celsius, fahr);
+		printf("%7d %4d\n", celsius, fahr);
 		celsius = celsius + step;
 	}
 
