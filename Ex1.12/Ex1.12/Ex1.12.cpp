@@ -2,22 +2,27 @@
 слову на каждой строке. */
 
 #include "stdafx.h"
-#include <stdio.h>
+#include <stdio.h>
+#define IN 1 // inside the word 
+#define OUT 0 // outside the word
+
+
 int main()
 {
-	int curr, prev = 0;
+	int input, state;
 
-	while ((curr = getchar()) != EOF)
-	{
-		if (curr == ' ' || curr == '\n' || curr == '\t')
-		{
-			if (prev != ' ' || prev != '\n' || prev != '\t')
-			{
-				printf("%c\n", curr);
+	state = OUT;
+
+	while ((input = getchar()) != EOF) {
+		if (input == ' ' || input == '\n' || input == '\t') {
+			if (state == IN) {
+				putchar('\n');
+				state = OUT;
 			}
 		}
-		else
-			putchar(curr);
-		prev = curr;
+		else {
+			state = IN;
+			putchar(input);
+		}
 	}
 }
