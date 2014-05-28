@@ -8,7 +8,7 @@ int main()
 	int a;
 	int b;
 
-	printf("Verifying \"getchar() != EOF\" returns \"1\" or \"0\".\nTo get \"1\" enter some character o digit and press Enter.\nTo get \"0\" press Ctrl+C.\n");
+	printf("Verifying \"getchar() != EOF\" returns \"1\" or \"0\".\nTo get \"1\" enter some character or digit and press Enter.\nTo get \"0\" press Ctrl+C.\n");
 
 	a = getchar();
 	b = a != EOF;
