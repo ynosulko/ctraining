@@ -3,26 +3,43 @@
 
 #include "stdafx.h"
 #include <stdio.h>
-#define IN 1 /* внутри слова */ 
-#define OUT 0 /* вне слова */
+#define IN 1 // inside the word 
+#define OUT 0 // outside the word
 
 
 int main()
 {
 	int input, state;
-
 	state = OUT;
+	const int maxWordLength = 20;
+	int wordLength[maxWordLength];
+	int currWordLength = 0;
 
-	while ((input = getchar()) != EOF) {
+	printf("Enter several words with different lengths bu no longer that 20 symbols and press Enter:\n");
+
+	for (int i = 0; i < maxWordLength; i++)
+		wordLength[i] = 0;
+
+	while ((input = getchar()) != '\n') {
 		if (input == ' ' || input == '\n' || input == '\t') {
 			if (state == IN) {
-				putchar('\n');
+				if (wordLength != 0)
+					wordLength[currWordLength - 1]++;
+				currWordLength = 0;
 				state = OUT;
 			}
 		}
 		else {
 			state = IN;
-			putchar('-');
+			currWordLength++;
 		}
+	}
+
+	for (int i = 0; i < maxWordLength; i++)
+	{
+		printf("%d ", i + 1);
+		for (int j = 0; j < wordLength[i]; j++)
+			printf("-");
+		printf("\n");
 	}
 }
